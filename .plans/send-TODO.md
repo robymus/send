@@ -57,16 +57,16 @@ with lint + typecheck + tests green.
 - [x] `src/routes/pages.ts` — serve `/`, `/admin`, `/t/:id` (HTML), static assets; unauthenticated page loads bounce to `/` via `/api/me` client guard
 - [x] Shared `js/api.js` helper (fetch wrapper, error toasts, humanSize + flag emoji client-side)
 - [x] Lint passes on all client JS
-- [x] Commit
+- [x] Commit (d14f201, pushed; CI green)
 
 ## Phase 6 — Container & local verification
 
 - [x] `Dockerfile` — multi-stage: build (`npm ci` + `tsc`) → runtime (`node:22-alpine`, prod deps, `dist/`, `public/`, `migrations/`, `EXPOSE 3000`, `CMD node dist/server.js`)
 - [x] `src/server.ts` — run migrations, `buildApp()`, listen on `0.0.0.0:$PORT`
 - [x] `app.json` — `{"cron":[{"command":"node dist/scripts/cleanup.js","schedule":"@daily"}]}`
-- [x] Local end-to-end: `docker compose` DB + built image; exercise real flows in a browser (login, create token, upload incl. drag-drop, download, delete, limit rejection, partner view via second browser profile)
-- [x] Local run of cleanup script against a token with past expiry
-- [x] Commit; push to GitHub `main`; confirm CI green
+- [x] Local end-to-end: real HTTP e2e (31 checks) — login (case-insensitive), create token, upload, download roundtrip, delete permission matrix, limit rejection (413), partner view, static pages/assets. Docker image builds; migrations apply idempotently on a fresh schema.
+- [x] Local run of cleanup script against a token with past expiry (deletes expired token + blob, keeps admin)
+- [x] Commit; push to GitHub `main`; confirm CI green (d14f201 + 06474c3 pushed, both CI runs green)
 
 ## Phase 7 — Deploy & handover
 

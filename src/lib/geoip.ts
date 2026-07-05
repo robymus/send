@@ -13,7 +13,7 @@ export async function lookupCountry(
   try {
     const res = await fetchFn(
       `https://ipwho.is/${encodeURIComponent(ip)}?fields=success,country_code`,
-      { signal: AbortSignal.timeout(1000) },
+      { signal: AbortSignal.timeout(1500) },
     );
     if (!res.ok) return null;
     const body = (await res.json()) as { success?: boolean; country_code?: string };

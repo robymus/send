@@ -66,6 +66,7 @@ export function fileRoutes(app: FastifyInstance): void {
 
       const auth = request.auth!;
       const countryCode = await app.geoLookup(request.ip);
+      request.log.info({ ip: request.ip, countryCode }, 'file uploaded');
       const size = (await stat(dest)).size;
       const row = await files.create(app.db, {
         id: fileId,
