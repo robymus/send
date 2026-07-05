@@ -15,5 +15,7 @@ COPY --from=build /app/dist ./dist
 COPY migrations ./migrations
 COPY public ./public
 EXPOSE 3000
-USER node
+# dokku chowns storage mounts to 32767:32767 — run as that uid so /data is writable
+RUN addgroup -g 32767 app && adduser -D -G app -u 32767 app
+USER app
 CMD ["node", "dist/server.js"]
