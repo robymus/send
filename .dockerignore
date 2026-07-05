@@ -1,0 +1,12 @@
+node_modules
+dist
+coverage
+data
+.env
+.git
+.github
+.plans
+test
+docker-compose.yml
+SEND.md
+CODEBASE.md
