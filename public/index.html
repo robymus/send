@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>send — easy file transfer</title>
+    <link rel="stylesheet" href="/app.css" />
+    <link rel="icon" href="/squirrel.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <main class="wrap hero">
+      <img class="logo" id="logo" src="/squirrel.svg" alt="Squirrel holding an envelope" />
+      <h1>send</h1>
+      <p class="tagline">Files, delivered squirrel-post.</p>
+      <form class="login-form" id="login-form">
+        <input
+          type="text"
+          id="token"
+          placeholder="your token"
+          autocomplete="off"
+          autocapitalize="none"
+          spellcheck="false"
+          autofocus
+        />
+        <button type="submit">Enter</button>
+      </form>
+      <p class="msg error" id="msg"></p>
+    </main>
+    <script type="module" src="/js/login.js"></script>
+  </body>
+</html>

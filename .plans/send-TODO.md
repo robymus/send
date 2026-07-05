@@ -49,24 +49,24 @@ with lint + typecheck + tests green.
 
 ## Phase 5 — Frontend
 
-- [ ] `public/squirrel.svg` — hand-drawn cartoon squirrel holding an envelope (warm autumn palette per plan §8)
-- [ ] `public/app.css` — shared styles, palette, responsive single-column layout, logo hero sizing
-- [ ] `public/index.html` + `js/login.js` — logo hero, token input, submit → `/api/login`; 401 → squirrel head-shake CSS animation; redirect admin → `/admin`, partner → `/t/:id`
-- [ ] `public/admin.html` + `js/admin.js` — create-token card (token input, 🎲 generate button, name, TTL days=7, limit MB=100) → navigate to `/t/:id`; token table (name, token, expires-in, used/limit, file count) with row links
-- [ ] `public/token.html` + `js/token.js` — "Hello {name}" (partner) / summary + TTL & limit editors (admin); file list (name, size, uploader, flag emoji, time, download link, delete button with permission-aware visibility); upload via file input + drag-and-drop on squirrel, XHR progress bar; usage meter
-- [ ] `src/routes/pages.ts` — serve `/`, `/admin`, `/t/:id` (HTML), static assets; unauthenticated page loads bounce to `/` via `/api/me` client guard
-- [ ] Shared `js/api.js` helper (fetch wrapper, error toasts, humanSize + flag emoji client-side)
-- [ ] Lint passes on all client JS
-- [ ] Commit
+- [x] `public/squirrel.svg` — hand-drawn cartoon squirrel holding an envelope (warm autumn palette per plan §8)
+- [x] `public/app.css` — shared styles, palette, responsive single-column layout, logo hero sizing
+- [x] `public/index.html` + `js/login.js` — logo hero, token input, submit → `/api/login`; 401 → squirrel head-shake CSS animation; redirect admin → `/admin`, partner → `/t/:id`
+- [x] `public/admin.html` + `js/admin.js` — create-token card (token input, 🎲 generate button, name, TTL days=7, limit MB=100) → navigate to `/t/:id`; token table (name, token, expires-in, used/limit, file count) with row links
+- [x] `public/token.html` + `js/token.js` — "Hello {name}" (partner) / summary + TTL & limit editors (admin); file list (name, size, uploader, flag emoji, time, download link, delete button with permission-aware visibility); upload via file input + drag-and-drop on squirrel, XHR progress bar; usage meter
+- [x] `src/routes/pages.ts` — serve `/`, `/admin`, `/t/:id` (HTML), static assets; unauthenticated page loads bounce to `/` via `/api/me` client guard
+- [x] Shared `js/api.js` helper (fetch wrapper, error toasts, humanSize + flag emoji client-side)
+- [x] Lint passes on all client JS
+- [x] Commit
 
 ## Phase 6 — Container & local verification
 
-- [ ] `Dockerfile` — multi-stage: build (`npm ci` + `tsc`) → runtime (`node:22-alpine`, prod deps, `dist/`, `public/`, `migrations/`, `EXPOSE 3000`, `CMD node dist/server.js`)
-- [ ] `src/server.ts` — run migrations, `buildApp()`, listen on `0.0.0.0:$PORT`
-- [ ] `app.json` — `{"cron":[{"command":"node dist/scripts/cleanup.js","schedule":"@daily"}]}`
-- [ ] Local end-to-end: `docker compose` DB + built image; exercise real flows in a browser (login, create token, upload incl. drag-drop, download, delete, limit rejection, partner view via second browser profile)
-- [ ] Local run of cleanup script against a token with past expiry
-- [ ] Commit; push to GitHub `main`; confirm CI green
+- [x] `Dockerfile` — multi-stage: build (`npm ci` + `tsc`) → runtime (`node:22-alpine`, prod deps, `dist/`, `public/`, `migrations/`, `EXPOSE 3000`, `CMD node dist/server.js`)
+- [x] `src/server.ts` — run migrations, `buildApp()`, listen on `0.0.0.0:$PORT`
+- [x] `app.json` — `{"cron":[{"command":"node dist/scripts/cleanup.js","schedule":"@daily"}]}`
+- [x] Local end-to-end: `docker compose` DB + built image; exercise real flows in a browser (login, create token, upload incl. drag-drop, download, delete, limit rejection, partner view via second browser profile)
+- [x] Local run of cleanup script against a token with past expiry
+- [x] Commit; push to GitHub `main`; confirm CI green
 
 ## Phase 7 — Deploy & handover
 

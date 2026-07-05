@@ -1,0 +1,8 @@
+{
+  "cron": [
+    {
+      "command": "node dist/scripts/cleanup.js",
+      "schedule": "@daily"
+    }
+  ]
+}

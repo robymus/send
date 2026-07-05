@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>send — files</title>
+    <link rel="stylesheet" href="/app.css" />
+    <link rel="icon" href="/squirrel.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="topbar">
+        <img class="logo" src="/squirrel.svg" alt="" />
+        <div>
+          <h1 id="title">…</h1>
+          <div class="sub" id="subtitle"></div>
+        </div>
+        <div class="spacer"></div>
+        <a href="/admin" id="back-link" hidden>← all tokens</a>
+        <button class="secondary" id="logout">Log out</button>
+      </header>
+
+      <section class="card" id="admin-controls" hidden>
+        <h2>Token settings</h2>
+        <div class="form-grid">
+          <div>
+            <label for="ttl-days">Expire in (days from now)</label>
+            <div class="token-input-row">
+              <input type="number" id="ttl-days" min="1" max="3650" value="7" />
+              <button type="button" class="secondary" id="ttl-save">Set</button>
+            </div>
+          </div>
+          <div>
+            <label for="limit-mb">Size limit (MB)</label>
+            <div class="token-input-row">
+              <input type="number" id="limit-mb" min="1" max="1024" />
+              <button type="button" class="secondary" id="limit-save">Set</button>
+            </div>
+          </div>
+        </div>
+        <p class="msg" id="settings-msg"></p>
+      </section>
+
+      <section class="dropzone" id="dropzone">
+        <img class="logo" src="/squirrel.svg" alt="" />
+        <div style="flex: 1">
+          <p><strong>Drop a file on the squirrel</strong> or</p>
+          <p style="margin-top: 6px">
+            <button id="pick">Choose a file…</button>
+            <input type="file" id="file-input" hidden />
+          </p>
+          <div class="progress" id="progress">
+            <div class="meter"><div id="progress-bar" style="width: 0%"></div></div>
+          </div>
+          <p class="msg" id="upload-msg"></p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Files</h2>
+        <div class="muted" id="usage"></div>
+        <div class="meter"><div id="usage-bar" style="width: 0%"></div></div>
+        <div style="height: 14px"></div>
+        <table>
+          <thead>
+            <tr>
+              <th>File</th>
+              <th class="num">Size</th>
+              <th class="file-uploader-col">Uploaded by</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="file-rows"></tbody>
+        </table>
+        <div class="empty" id="files-empty" hidden>No files yet. The squirrel is waiting.</div>
+      </section>
+    </main>
+    <script type="module" src="/js/token.js"></script>
+  </body>
+</html>
