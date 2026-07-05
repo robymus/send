@@ -61,9 +61,11 @@
     <circle cx="196" cy="181" r="7" fill="#7a9e4f"/>
   </g>
 
-  <!-- arms over the envelope -->
+  <!-- arms grabbing the letter — each emerges from the body and reaches onto the
+       envelope; the right arm starts up on the chest (above the letter) and curls
+       down to grab the top edge. -->
   <path d="M96 132 C 106 144, 118 152, 132 154 C 124 162, 106 158, 96 146 Z" fill="#b5651d"/>
   <ellipse cx="130" cy="153" rx="9" ry="7" fill="#8f4a12" transform="rotate(-14 130 153)"/>
-  <path d="M177 160 C 182 150, 178 139, 168 139 C 162 145, 165 155, 173 161 Z" fill="#b5651d"/>
+  <path d="M150 126 C 160 122, 170 130, 168 142 C 160 146, 152 140, 148 132 Z" fill="#b5651d"/>
   <ellipse cx="163" cy="144" rx="9" ry="7" fill="#8f4a12" transform="rotate(16 163 144)"/>
 </svg>
