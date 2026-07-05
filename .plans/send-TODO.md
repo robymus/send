@@ -70,13 +70,13 @@ with lint + typecheck + tests green.
 
 ## Phase 7 — Deploy & handover
 
-- [ ] `$DK apps:create send`
-- [ ] `$DK postgres:link shared send`
-- [ ] `$DK storage:ensure-directory send` + `storage:mount send /var/lib/dokku/data/storage/send:/data`
-- [ ] `$DK config:set send NODE_ENV=production DATA_DIR=/data SESSION_SECRET=$(openssl rand -hex 32)`
-- [ ] `git remote add dokku ssh://dokku@core.p97.dev:42022/send` + push `main`
-- [ ] Verify port mapping / `EXPOSE` picked up; `curl https://send.apps.p97.dev/healthz`
-- [ ] `$DK run send node dist/scripts/seed-admin.js` → capture admin token, **post in chat**
-- [ ] Smoke test on production: admin login, create a test token, upload/download/delete a file, partner login with test token, ~100 MB upload (bump proxy body limit if needed), then remove test artifacts
-- [ ] Confirm cron registered (`$DK cron:list send`)
-- [ ] Final commit of any deploy tweaks; update README with URL + ops notes
+- [x] `$DK apps:create send`
+- [x] `$DK postgres:link shared send`
+- [x] `$DK storage:ensure-directory send` + `storage:mount send /var/lib/dokku/data/storage/send:/data`
+- [x] `$DK config:set send NODE_ENV=production DATA_DIR=/data SESSION_SECRET=$(openssl rand -hex 32)`
+- [x] `git remote add dokku ssh://dokku@core.p97.dev:42022/send` + push `main` (deployed at 2c82dea)
+- [x] Verify port mapping / `EXPOSE` picked up; `curl https://send.apps.p97.dev/healthz` → `{"ok":true}`
+- [x] `$DK run send node dist/scripts/seed-admin.js` → admin token minted (prior session's token was lost with it, so rotated) and posted in chat
+- [x] Smoke test on production: admin login (case-insensitive), create token, upload/download, partner login, partner-delete-admin-file → 403, oversized upload → 413, pages served; test artifacts removed (prod left with only the admin token, 0 files)
+- [x] Confirm cron registered (`$DK cron:list send`) → `@daily node dist/scripts/cleanup.js`
+- [x] Final commit of any deploy tweaks; update README with URL + ops notes
